@@ -23,8 +23,32 @@ public class Libreria {
 		this.capacidadLibros = capacidadLibros;
 	}
 	
-	public void VendedorNuevo(Vendedor v) {
-		this.listaVendedores.add(v);
+	public List<Libro> getListaLibros() {
+		return listaLibros;
+	}
+
+	public void setListaLibros(List<Libro> listaLibros) {
+		this.listaLibros = listaLibros;
+	}
+
+	public List<Venta> getListaVentas() {
+		return listaVentas;
+	}
+
+	public void setListaVentas(List<Venta> listaVentas) {
+		this.listaVentas = listaVentas;
+	}
+
+	public List<Vendedor> getListaVendedores() {
+		return listaVendedores;
+	}
+
+	public void setListaVendedores(List<Vendedor> listaVendedores) {
+		this.listaVendedores = listaVendedores;
+	}
+
+	public boolean VendedorNuevo(Vendedor v) {
+		return this.listaVendedores.add(v);
 	}
 	
 	public Vendedor asociarVendedor(String dni) {
@@ -37,8 +61,8 @@ public class Libreria {
 		return v;
 	}
 	
-	public void LibroNuevo(Libro libro) {
-		this.listaLibros.add(libro);
+	public boolean LibroNuevo(Libro libro) {
+		return this.listaLibros.add(libro);
 	}
 	
 	//Metodo que actualiza el estado del libro para ponerlo de baja
@@ -52,6 +76,17 @@ public class Libreria {
 		}
 		
 		return encontrado;
+	}
+	
+	public Libro buscarLibro(int id) {
+		Libro buscado = null;
+		for(int i = 0; i < this.listaLibros.size(); i++) {
+			if(this.listaLibros.get(i).getId() == id) {
+				buscado = this.listaLibros.get(i);
+			}
+		}
+		
+		return buscado;
 	}
 	
 	//Habria que hacer el comparator para utilizarlo en el sort de ArrayList

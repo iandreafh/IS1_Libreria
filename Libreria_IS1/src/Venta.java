@@ -66,9 +66,10 @@ public class Venta {
 		return id;
 	}
 	
-	public void añadirLinea(float precioFinal, Libro libro) {
+	public boolean añadirLinea(float precioFinal, Libro libro) {
 		LineaVenta nueva = new LineaVenta(sigId(), precioFinal, libro);
-		this.listaLdv.add(nueva);
+		this.precioTotal += precioFinal;
+		return this.listaLdv.add(nueva);
 	}
 	
 	public void confirmarVenta() {
@@ -78,7 +79,7 @@ public class Venta {
 	public void crearBonos() {
 		Vendedor v;
 		float cantidad;
-		//Por cada linea de venta, creo un bono
+		//Por cada linea de venta, creo un bono e informo al vendedor
 		for(int i = 0; i < this.listaLdv.size(); i++) {
 			v = this.listaLdv.get(i).getLibro().getVendedor();
 			cantidad = (float) (this.listaLdv.get(i).getPrecioFinal() * 0.15);
@@ -87,7 +88,18 @@ public class Venta {
 			Bono nuevo = new Bono(1, cantidad, v);
 			this.listaLdv.get(i).setBono(nuevo);
 			v.añadirBono(nuevo);
+			informarVendedor(this.listaLdv.get(i).getLibro(), nuevo);
 		}
+	}
+	
+	public void informarVendedor(Libro libro, Bono bono) {
+		String email = bono.getVendedor().getEmail();
+		String mensaje = "Buenas " + bono.getVendedor().getNombre();
+		mensaje += "\nLe informamos que su libro " + libro.getTitulo() + " se ha vendido.";
+		mensaje += "\nTiene un nuevo bono de " + bono.getCantidad() + " € a su disposición.";
+		mensaje += "\n\n Gracias por utilizar nuestros servicios, La Librería";
+		
+		//Se enviaria el mensaje a ese email
 	}
 
 }
