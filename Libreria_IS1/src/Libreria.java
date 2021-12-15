@@ -41,8 +41,31 @@ public class Libreria {
 		this.listaLibros.add(libro);
 	}
 	
-	public void deleteLibro(int id) {
+	//Metodo que actualiza el estado del libro para ponerlo de baja
+	public boolean deleteLibro(int id) {
+		boolean encontrado = false;
+		for(int i = 0; i < this.listaLibros.size(); i++) {
+			if(this.listaLibros.get(i).getId() == id) {
+				this.listaLibros.get(i).setEstado(-1); // Estado -1 es no disponible, 0 en exposicion, 1 ya vendido
+				encontrado = true;
+			}
+		}
 		
+		return encontrado;
+	}
+	
+	//Habria que hacer el comparator para utilizarlo en el sort de ArrayList
+	public List<Libro> listadoLibrosAlfabeticamente() {
+		List<Libro> listado = new ArrayList<Libro>();
+		
+		return listado;
+	}
+	
+	//Habria que hacer el comparator para utilizarlo en el sort de ArrayList
+	public List<Libro> listadoLibrosAntiguos() {
+		List<Libro> listado = new ArrayList<Libro>();
+		
+		return listado;
 	}
 
 }
