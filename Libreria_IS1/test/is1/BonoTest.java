@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package ModeloDeNegocio;
+package is1;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -47,8 +47,6 @@ public class BonoTest {
         int expResult = 10;
         int result = instance.getId();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -62,8 +60,6 @@ public class BonoTest {
         Bono instance = new Bono(10, 1, v);
         instance.setId(id);
         assertEquals(id, instance.getId());
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -77,8 +73,6 @@ public class BonoTest {
         float expResult = 4.8F;
         float result = instance.getCantidad();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -92,8 +86,6 @@ public class BonoTest {
         Bono instance = new Bono(10, 4.8F, v);
         instance.setCantidad(cantidad);
         assertEquals(cantidad, instance.getCantidad(), 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -107,8 +99,6 @@ public class BonoTest {
         Vendedor expResult = v;
         Vendedor result = instance.getVendedor();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -121,8 +111,6 @@ public class BonoTest {
         Bono instance = new Bono(10, 4.8F, v);
         instance.setVendedor(v);
         assertEquals(instance.getVendedor(), v);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
 }

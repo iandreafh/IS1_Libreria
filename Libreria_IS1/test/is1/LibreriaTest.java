@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package ModeloDeNegocio;
+package is1;
 
 import java.util.List;
 import org.junit.After;
@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author pablo
  */
 public class LibreriaTest {
-    
+
     public LibreriaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,12 +43,10 @@ public class LibreriaTest {
     @Test
     public void testGetCapacidadLibros() {
         System.out.println("getCapacidadLibros");
-        Libreria instance = null;
-        int expResult = 0;
+        Libreria instance = new Libreria(100);
+        int expResult = 100;
         int result = instance.getCapacidadLibros();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,11 +55,10 @@ public class LibreriaTest {
     @Test
     public void testSetCapacidadLibros() {
         System.out.println("setCapacidadLibros");
-        int capacidadLibros = 0;
-        Libreria instance = null;
+        int capacidadLibros = 50;
+        Libreria instance = new Libreria(100);
         instance.setCapacidadLibros(capacidadLibros);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        assertEquals(expResult, result);
     }
 
     /**
@@ -247,5 +244,5 @@ public class LibreriaTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }

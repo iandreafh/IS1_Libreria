@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package ModeloDeNegocio;
+package is1;
 
 import java.util.Date;
 import org.junit.After;
@@ -288,7 +288,7 @@ public class LibroTest {
     @Test
     public void testSetVendedor() {
         System.out.println("setVendedor");
-        Vendedor vendedor =new Vendedor("22222222-A", "nombre2", "apellido2", 222222222, "prueba2@gmail.com");
+        Vendedor vendedor = new Vendedor("22222222-A", "nombre2", "apellido2", 222222222, "prueba2@gmail.com");
         Libro instance = l;
         instance.setVendedor(vendedor);
         assertEquals(vendedor, instance.getVendedor());

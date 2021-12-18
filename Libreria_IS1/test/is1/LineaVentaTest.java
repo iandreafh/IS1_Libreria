@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package ModeloDeNegocio;
+package is1;
 
 import java.util.Date;
 import org.junit.After;
@@ -141,7 +141,6 @@ public class LineaVentaTest {
     /**
      * Test of getBono method, of class LineaVenta.
      */
-    
     //MUY IMPORTANTE ESTO FUNCIONA PERO NO USAMOS BONO CUANDO CREAMOS LA LINEA DE VENTAS 
     //IMPORTANTE!!!!!!!!!!!!!!!!!!!
     @Test
