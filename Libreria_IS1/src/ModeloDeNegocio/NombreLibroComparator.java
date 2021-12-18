@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package is1;
+package ModeloDeNegocio;
 
 import java.util.Comparator;
 
@@ -11,11 +11,11 @@ import java.util.Comparator;
  *
  * @author mariavaro
  */
-public class FechaAltaComparator implements Comparator<Libro>{
+public class NombreLibroComparator implements Comparator<Libro> {
 
     @Override
     public int compare(Libro l1, Libro l2) {
-        return l1.getFechaAlta().compareTo(l2.getFechaAlta());
+        return l1.getTitulo().compareTo(l2.getTitulo());
     }
-    
+
 }
