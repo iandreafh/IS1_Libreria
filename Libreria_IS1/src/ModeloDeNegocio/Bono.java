@@ -1,4 +1,4 @@
-package is1;
+package ModeloDeNegocio;
 
 public class Bono {
 
