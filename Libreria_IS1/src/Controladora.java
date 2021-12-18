@@ -9,9 +9,9 @@ public class Controladora {
 		this.lib = new Libreria(100); //Capacidad para 100 libros, por ejemplo
 	}
 	
-	//Habria que añadir todos los metodos de la controladora
+	//Habria que aï¿½adir todos los metodos de la controladora
 
-	public boolean añadirVendedor(String dni, String nombre, String apellidos, long telefono, String email) {
+	public boolean anadirVendedor(String dni, String nombre, String apellidos, long telefono, String email) {
 		Vendedor v = new Vendedor(dni, nombre, apellidos, telefono, email);
 		return this.lib.VendedorNuevo(v);
 	}
@@ -25,7 +25,7 @@ public class Controladora {
 		return encontrado;
 	}
 	
-	public boolean añadirLibro(int id, String titulo, String ISBN, float precioInicial, float precioMinimo, Date fechaAlta,
+	public boolean anadirLibro(int id, String titulo, String ISBN, float precioInicial, float precioMinimo, Date fechaAlta,
 			Date fechaBaja, int estado, Vendedor vendedor) {
 		//Cuidado con si la lista esta vacia y es el primer libro
 		int sigId = this.lib.getListaLibros().get(this.lib.getListaLibros().size()).getId() + 1;
@@ -45,7 +45,7 @@ public class Controladora {
 		if(libro == null) //Si no encuentro el libro, no ok
 			ok = false;
 		else
-			ok = this.ventaActual.añadirLinea(precioFinal, libro);
+			ok = this.ventaActual.anadirLinea(precioFinal, libro);
 		
 		return ok;
 	}

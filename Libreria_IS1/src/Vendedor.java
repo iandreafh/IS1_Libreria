@@ -87,7 +87,7 @@ public class Vendedor {
 			this.email = email;
 		}
 		
-		public boolean añadirBono(Bono bono) {
+		public boolean anadirBono(Bono bono) {
 			return this.listaBonos.add(bono);
 		}
 	

@@ -58,15 +58,20 @@ public class Venta {
 	
 	private int sigId() {
 		int id;
-		if(this.listaLdv.isEmpty())
-			id = 0;
-		else
-			id = this.listaLdv.get(this.listaLdv.size()).getId() + 1;
-			
+
+		//Esto no hace referencia a las ID de listaLDV, sino que hace referencia a su propia ID
+		//if(this.listaLdv.isEmpty())
+		//	id = 0;
+		//else
+		//id = this.listaLdv.get(this.listaLdv.size()).getId() + 1;
+		
+		id=getId();
+		setId(id);
+
 		return id;
 	}
 	
-	public boolean añadirLinea(float precioFinal, Libro libro) {
+	public boolean anadirLinea(float precioFinal, Libro libro) {
 		LineaVenta nueva = new LineaVenta(sigId(), precioFinal, libro);
 		this.precioTotal += precioFinal;
 		return this.listaLdv.add(nueva);
@@ -87,7 +92,7 @@ public class Venta {
 			//Hay que ver que hacemos con el id del bono, por defecto 1
 			Bono nuevo = new Bono(1, cantidad, v);
 			this.listaLdv.get(i).setBono(nuevo);
-			v.añadirBono(nuevo);
+			v.anadirBono(nuevo);
 			informarVendedor(this.listaLdv.get(i).getLibro(), nuevo);
 		}
 	}
@@ -96,8 +101,8 @@ public class Venta {
 		String email = bono.getVendedor().getEmail();
 		String mensaje = "Buenas " + bono.getVendedor().getNombre();
 		mensaje += "\nLe informamos que su libro " + libro.getTitulo() + " se ha vendido.";
-		mensaje += "\nTiene un nuevo bono de " + bono.getCantidad() + " € a su disposición.";
-		mensaje += "\n\n Gracias por utilizar nuestros servicios, La Librería";
+		mensaje += "\nTiene un nuevo bono de " + bono.getCantidad() + " ï¿½ a su disposiciï¿½n.";
+		mensaje += "\n\n Gracias por utilizar nuestros servicios, La Librerï¿½a";
 		
 		//Se enviaria el mensaje a ese email
 	}
