@@ -1,10 +1,12 @@
 package ModeloDeNegocio;
+
 import java.util.*;
 
 public class Controladora {
 
     private Libreria lib;
     private Venta ventaActual;
+    private Vendedor vendedorActual;
 
     public Controladora() {
         this.lib = new Libreria(100); //Capacidad para 100 libros, por ejemplo
@@ -13,32 +15,33 @@ public class Controladora {
 
     public boolean anadirVendedor(String dni, String nombre, String apellidos, long telefono, String email) {
         Vendedor v = new Vendedor(dni, nombre, apellidos, telefono, email);
+        //this.vendedorActual=v;
         return this.lib.VendedorNuevo(v);
     }
 
     public boolean asociarVendedor(String dni) {
         boolean encontrado = false;
-        Vendedor v = this.lib.asociarVendedor(dni);
-        if (v != null) {
+        this.vendedorActual = this.lib.asociarVendedor(dni);
+        if (vendedorActual != null) {
             encontrado = true;
         }
 
         return encontrado;
     }
 
-    public boolean anadirLibro(String titulo, String ISBN, float precioInicial, float precioMinimo, Date fechaAlta,
-            Date fechaBaja, int estado, Vendedor vendedor) {
+    public boolean anadirLibro(String titulo, String ISBN, float precioInicial, float precioMinimo, int estado) {
         //Cuidado con si la lista esta vacia y es el primer libro
 //        int sigId = this.lib.getListaLibros().get(this.lib.getListaLibros().size()).getId() + 1;
-        int sigId = this.lib.getListaLibros().size()+1;
-        Libro libro = new Libro(sigId, titulo, ISBN, precioInicial, precioMinimo, fechaAlta, fechaBaja, estado, vendedor);
+        int sigId = this.lib.getListaLibros().size() + 1;
+        Date fechaAlta=new Date();
+        Libro libro = new Libro(sigId, titulo, ISBN, precioInicial, precioMinimo, fechaAlta, estado, this.vendedorActual);
         return this.lib.LibroNuevo(libro);
     }
 
     public void crearVenta() {
         //Cuidado con si la lista esta vacia y es la primera venta
 //        int sigId = this.lib.getListaVentas().get(this.lib.getListaVentas().size()-1).getId() + 1;
-        int sigId = this.lib.getListaVentas().size()+1;
+        int sigId = this.lib.getListaVentas().size() + 1;
         ventaActual = new Venta(sigId, new Date());
     }
 
@@ -83,27 +86,17 @@ public class Controladora {
         return this.lib.listadoLibrosAntiguos();
     }
 
-    
-    void cargaDatos(){
+    void cargaDatos() {
         // Dos vendedores.
         anadirVendedor("111111", "Julia", "Rodriguez", 654789877, "jrodriguez@mail.com");
         anadirVendedor("222222", "Lara", "Jimenez", 764547748, "larita@mail.com");
-        
+
 //        this.anadirLibro("Harry Potter y la piedra filosofal", "9780807286005", 20, 15, new Date(),
 //            null, 0, )
         // Tres depósitos de libros, con uno, dos y tres libros, respectivamente. Los dos primeros 
         // correspondientes a un vendedor, y el depósito de tres libros asignado al otro vendedor.
-        
         //Dos ventas, una con un libro y otra con dos.
         // Dos retiradas de libros, una por cada vendedor, una de solo un libro y otra de dos.
-
-        
     }
-    
+
 }
-
-
-
-
-
-
