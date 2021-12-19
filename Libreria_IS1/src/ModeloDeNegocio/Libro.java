@@ -15,14 +15,14 @@ public class Libro {
     private Vendedor vendedor;
 
     public Libro(int id, String titulo, String ISBN, float precioInicial, float precioMinimo, Date fechaAlta,
-            Date fechaBaja, int estado, Vendedor vendedor) {
+            int estado, Vendedor vendedor) {
         this.id = id;
         this.titulo = titulo;
         this.ISBN = ISBN;
         this.precioInicial = precioInicial;
         this.precioMinimo = precioMinimo;
         this.fechaAlta = fechaAlta;
-        this.fechaBaja = fechaBaja;
+        this.fechaBaja = null;
         this.estado = estado;
         this.vendedor = vendedor;
     }
@@ -98,5 +98,15 @@ public class Libro {
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
-
+    
+    public String toString(){
+        String factura="Datos del libro actual:\n\t ID: "+this.id
+                +"\n\t Título: "+this.titulo
+                +"\n\t ISBN: "+this.ISBN
+                +"\n\t Precio Inicial: "+this.precioInicial
+                +"\n\t Precio Minimo: "+this.precioMinimo
+                +"\n\t Vendedor: "+this.vendedor.getNombre()+" "+this.vendedor.getApellidos();
+        
+        return factura;
+    }
 }
