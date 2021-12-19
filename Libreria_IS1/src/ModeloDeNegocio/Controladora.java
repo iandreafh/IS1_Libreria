@@ -43,6 +43,7 @@ public class Controladora {
 //        int sigId = this.lib.getListaVentas().get(this.lib.getListaVentas().size()-1).getId() + 1;
         int sigId = this.lib.getListaVentas().size() + 1;
         ventaActual = new Venta(sigId, new Date());
+        System.out.println("Se ha iniciado una nueva Venta con ID "+this.ventaActual.getId()+" y con fecha "+this.ventaActual.getFecha());
     }
 
     public boolean addLibro(int id, float precioFinal) {
@@ -60,7 +61,7 @@ public class Controladora {
 
     public void confirmarVenta() {
         this.ventaActual.confirmarVenta();
-        List<String> emails = new ArrayList<String>();
+        List<String> emails = new ArrayList<String>(); 
     }
 
     //Este metodo no haria falta, hay que borrarlo, ya que se hace automatico al crear el bono
@@ -97,6 +98,11 @@ public class Controladora {
         // correspondientes a un vendedor, y el depósito de tres libros asignado al otro vendedor.
         //Dos ventas, una con un libro y otra con dos.
         // Dos retiradas de libros, una por cada vendedor, una de solo un libro y otra de dos.
+    }
+    
+    //Necesitamos para poder comprobar el resultado con los test
+    public Venta getVenta(){
+        return this.ventaActual;
     }
 
 }
