@@ -37,7 +37,7 @@ public class LibroTest {
     public void setUp() {
         fecha = new Date();
         v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        l = new Libro(85, "libro1", "1111-A", 15.1F, 3.5F, fecha, fecha, 0, v);
+        l = new Libro(85, "libro1", "1111-A", 15.1F, 3.5F, fecha, 0, v);
     }
 
     @After

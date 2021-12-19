@@ -42,7 +42,7 @@ public class VentaTest {
     public void setUp() {
         fecha = new Date();
         v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, fecha, 0, v);
+        l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
         ldv = new LineaVenta(10, 15.8F, l);
         ldv2 = new LineaVenta(11, 1.8F, l);
         ventaPrueba = new Venta(5, fecha);

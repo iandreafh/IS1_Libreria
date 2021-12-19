@@ -15,9 +15,10 @@ public class Pantalla {
 
     private Controladora controladora;
 
-//    public Pantalla(Controladora controlador) {
-//        this.controladora = controlador;
-//    }
+    public Pantalla() {
+        this.controladora = new Controladora();
+    }
+    
     public void mostrarOpciones() {
         Scanner s = new Scanner(System.in);
         int opc = -1;
@@ -33,26 +34,9 @@ public class Pantalla {
             gestionLibros();
         } else if (opc == 2) {
             gestionVendedores();
+        } else if (opc == 3) {
+            venta();
         }
-
-//        do {
-//            System.out.println("\n\n\n\tMenú Principal:\n");
-//            System.out.println("\t1. Gestión de Almacen");
-//            System.out.println("\t2. Gestión de Ventas");
-//            System.out.println("\t3. Listar tienda completa");
-//            System.out.println("\t---------------------");
-//            System.out.println("\t\t0. Salir");
-//            System.out.print("\n\n--> Introduzca una opción: ");
-//            opc = s.nextInt();
-//            while (opc < 0 || opc > 3) {
-//                System.out.print("--> Introduzca una opción valida: ");
-//                opc = s.nextInt();
-//                System.out.println("\n");
-//            }
-//            if (opc != 0) {
-//                realizarOpcion(opc);
-//            }
-//        } while (opc != 0);
     }
 
     private void finProceso() {
@@ -117,7 +101,40 @@ public class Pantalla {
 
     }
 
-    private void altaLibros() {
+    public void venta() {
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("\nIniacio de una nueva Venta");
+
+        controladora.crearVenta();
+
+        int decision = 1;
+        int id;
+        float precioFinal;
+        boolean operacion;
+
+        while (decision != 2) {
+            System.out.println("\n ¿Quiere introducir un nuevo libro?: \n\t 1. Si\n\t 2. No");
+            decision = s.nextInt();
+            
+            System.out.println("\tIntroducza el id del libro a vender: ");
+            id=s.nextInt();
+            
+            System.out.println("\tIntroducza el precio final del libro a vender: ");
+            precioFinal=s.nextFloat();
+            
+            operacion=controladora.addLibro(id, precioFinal);
+            if(operacion==true){
+                System.out.println("Se anadio el libro al carrito de compra.");
+            }else{
+                System.out.println("No pudo completarse la operación.");
+            }
+        }
+        
+        controladora.confirmarVenta();
+    }
+
+    public void altaLibros() {
         Scanner s = new Scanner(System.in);
 
         System.out.println("Introduzca el título del libro: ");
@@ -208,8 +225,8 @@ public class Pantalla {
             System.out.println("No pudo completarse la acción.");
         }
     }
-    
-    public void modificarVendedor(){
+
+    public void modificarVendedor() {
         System.out.println("YA PARA MAÑANA");
     }
 }
