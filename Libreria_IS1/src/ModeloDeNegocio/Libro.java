@@ -14,8 +14,7 @@ public class Libro {
     private int estado;
     private Vendedor vendedor;
 
-    public Libro(int id, String titulo, String ISBN, float precioInicial, float precioMinimo, Date fechaAlta,
-            int estado, Vendedor vendedor) {
+    public Libro(int id, String titulo, String ISBN, float precioInicial, float precioMinimo, Date fechaAlta, Vendedor vendedor) {
         this.id = id;
         this.titulo = titulo;
         this.ISBN = ISBN;
@@ -23,7 +22,7 @@ public class Libro {
         this.precioMinimo = precioMinimo;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = null;
-        this.estado = estado;
+        this.estado = 0; //Por defecto un nuevo libro esta en exposicion
         this.vendedor = vendedor;
     }
 
@@ -105,7 +104,8 @@ public class Libro {
                 +"\n\t ISBN: "+this.ISBN
                 +"\n\t Precio Inicial: "+this.precioInicial
                 +"\n\t Precio Minimo: "+this.precioMinimo
-                +"\n\t Vendedor: "+this.vendedor.getNombre()+" "+this.vendedor.getApellidos();
+                +"\n\t Vendedor: "+this.vendedor.getNombre()+" "+this.vendedor.getApellidos()
+                +"\n\t Estado: "+(estado==0?"En exposición":(estado==1?"Vendido":"De baja"));
         
         return factura;
     }

@@ -45,7 +45,7 @@ public class LineaVentaTest {
         System.out.println("getId");
         Date fecha = new Date();
         Vendedor v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
+        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, v);
         LineaVenta instance = new LineaVenta(10, 15.8F, l);
         int expResult = 10;
         int result = instance.getId();
@@ -63,7 +63,7 @@ public class LineaVentaTest {
         int id = 5;
         Date fecha = new Date();
         Vendedor v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
+        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, v);
         LineaVenta instance = new LineaVenta(10, 15.8F, l);
         instance.setId(id);
         assertEquals(id, instance.getId());
@@ -79,7 +79,7 @@ public class LineaVentaTest {
         System.out.println("getPrecioFinal");
         Date fecha = new Date();
         Vendedor v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
+        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, v);
         LineaVenta instance = new LineaVenta(10, 15.8F, l);
         float expResult = 15.8F;
         float result = instance.getPrecioFinal();
@@ -97,7 +97,7 @@ public class LineaVentaTest {
         float precioFinal = 58.1F;
         Date fecha = new Date();
         Vendedor v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
+        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, v);
         LineaVenta instance = new LineaVenta(10, 15.8F, l);
         instance.setPrecioFinal(precioFinal);
         assertEquals(precioFinal, instance.getPrecioFinal(), 0.0);
@@ -113,7 +113,7 @@ public class LineaVentaTest {
         System.out.println("getLibro");
         Date fecha = new Date();
         Vendedor v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
+        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, v);
         LineaVenta instance = new LineaVenta(10, 15.8F, l);
         Libro expResult = l;
         Libro result = instance.getLibro();
@@ -130,7 +130,7 @@ public class LineaVentaTest {
         System.out.println("setLibro");
         Date fecha = new Date();
         Vendedor v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
+        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, v);
         LineaVenta instance = new LineaVenta(10, 15.8F, l);
         instance.setLibro(l);
         assertEquals(l, instance.getLibro());
@@ -149,7 +149,7 @@ public class LineaVentaTest {
         System.out.println("getBono");
         Date fecha = new Date();
         Vendedor v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
+        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, v);
         LineaVenta instance = new LineaVenta(10, 15.8F, l);
         Bono bono = new Bono(15, 5.6F, v);
         instance.setBono(bono);
@@ -168,7 +168,7 @@ public class LineaVentaTest {
         System.out.println("setBono");
         Date fecha = new Date();
         Vendedor v = new Vendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
-        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, 0, v);
+        Libro l = new Libro(0, "libro1", "1111-A", 0, 0, fecha, v);
         LineaVenta instance = new LineaVenta(10, 15.8F, l);
         Bono bono = new Bono(15, 5.6F, v);
         instance.setBono(bono);

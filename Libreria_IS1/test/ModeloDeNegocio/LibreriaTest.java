@@ -53,8 +53,8 @@ public class LibreriaTest {
         listaVendedores.add(vendedor1);
         listaVendedores.add(vendedor2);
 
-        libro1 = new Libro(85, "libro1", "1111-A", 15.1F, 3.5F, fecha, 0, vendedor1);
-        libro2 = new Libro(95, "libro2", "1111-B", 1.1F, 0.5F, fecha, 0, vendedor2);
+        libro1 = new Libro(85, "libro1", "1111-A", 15.1F, 3.5F, fecha, vendedor1);
+        libro2 = new Libro(95, "libro2", "1111-B", 1.1F, 0.5F, fecha, vendedor2);
 
         listaLibros.add(libro1);
         listaLibros.add(libro2);
@@ -236,7 +236,7 @@ public class LibreriaTest {
     }
 
     /**
-     * Test of deleteLibro method, of class Libreria.
+     * Test of bajaLibro method, of class Libreria.
      */
     @Test
     public void testDeleteLibro() {
@@ -244,9 +244,9 @@ public class LibreriaTest {
         int id = 85;
         Libreria instance = libreria;
         instance.setListaLibros(listaLibros);
-        instance.deleteLibro(id);
+        instance.bajaLibro(id);
         boolean expResult = true;
-        boolean result = instance.deleteLibro(id);
+        boolean result = instance.bajaLibro(id);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

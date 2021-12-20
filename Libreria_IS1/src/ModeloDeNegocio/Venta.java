@@ -84,7 +84,7 @@ public class Venta {
     }
 
     /***
-     * Gengera los bonos asociados a cada linea de venta
+     * Genera los bonos asociados a cada linea de venta
      */
     public void crearBonos() {
         Vendedor v;
