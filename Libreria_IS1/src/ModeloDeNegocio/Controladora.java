@@ -60,8 +60,7 @@ public class Controladora {
     }
 
     public void confirmarVenta() {
-        this.ventaActual.confirmarVenta();
-        List<String> emails = new ArrayList<String>();
+        this.lib.confirmarVenta(ventaActual);
     }
 
     public boolean bajaLibro(int id) {
@@ -91,19 +90,19 @@ public class Controladora {
 
         // Tres depósitos de libros, con uno, dos y tres libros, respectivamente. Los dos primeros 
         // correspondientes a un vendedor, y el depósito de tres libros asignado al otro vendedor.
-        //Alta de 1 y 2 libros asociados al primer vendedor
+        // Alta de 1 y 2 libros asociados al primer vendedor
         this.asociarVendedor("111111");
         this.anadirLibro("Harry Potter y la piedra filosofal", "1234-123-123", 12, 10); // id 1
         this.anadirLibro("Fairy Oak", "1234-123-124", 10, 10); // id 2
         this.anadirLibro("Orgullo y prejuicio", "1234-123-125", 18, 15); // id 3
 
-        //Alta de 3 libros asociados al segundo vendedor
+        // Alta de 3 libros asociados al segundo vendedor
         this.asociarVendedor("222222");
         this.anadirLibro("Peppa pig", "1234-123-133", 12, 10); // id 4
         this.anadirLibro("Star Wars", "1234-123-134", 15, 10); // id 5
         this.anadirLibro("Los pilares de la Tierra", "1234-123-135", 20, 18); // id 6
 
-        //Dos ventas, una con un libro y otra con dos.
+        // Dos ventas, una con un libro y otra con dos.
         this.crearVenta(); //Venta con 1 libro
         this.addLibroVenta(3, 16);
         this.confirmarVenta();

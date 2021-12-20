@@ -87,15 +87,8 @@ public class Vendedor {
                 "\n DNI: "+getDni()+
                 "\n Teléfono: "+getTelefono()+
                 "\n Email: "+getEmail()+
-                "\n Bonos: ";
-        
-        Iterator itBonos=listaBonos.iterator();
-        
-        int i=0;
-        while(itBonos.hasNext()){
-            message+="\n Bono Nº "+i+" "+itBonos.next().toString();
-            
-        }
+                "\n Bonos: "+ listaBonos.size();
+
         return message;
     }
 

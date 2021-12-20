@@ -101,8 +101,22 @@ public class Libreria {
      * @return true si el vendedor ha sido anadido a la lista de vendedores
      */
     public boolean vendedorNuevo(Vendedor v) {
+        System.out.println("Doy de alta a " + v.getNombre() + ' ' + v.getApellidos());
         return this.listaVendedores.add(v);
     }
+
+    /**
+     * *
+     * Metodo que anade una venta nueva a la libreria
+     *
+     * @param venta Instancia de venta a anadir
+     * @return True si el libro ha sido anadido a la libreria
+     */
+    public boolean confirmarVenta(Venta venta) {
+        venta.confirmarVenta();
+        return this.listaVentas.add(venta);
+    }
+
 
     //TODO: Este asociar vendedor no se que hace
     /**
@@ -130,6 +144,7 @@ public class Libreria {
      * @return True si el libro ha sido anadido a la libreria
      */
     public boolean libroNuevo(Libro libro) {
+        System.out.println("Doy de alta " + libro.getTitulo());
         return this.listaLibros.add(libro);
     }
 

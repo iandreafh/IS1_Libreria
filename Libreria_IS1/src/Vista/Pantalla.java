@@ -267,7 +267,7 @@ public class Pantalla {
         String nombre = s.next();
 
         System.out.println("Introduzca el apellido: ");
-        String apellidos = s.next();
+        String apellidos = s.nextLine();
 
         System.out.println("Introduzca el telefono: ");
         long telefono = s.nextLong();
@@ -293,13 +293,10 @@ public class Pantalla {
 
         System.out.println("Introduzca el dni del vendedor: ");
         String dni = s.next();
-        while (dni.length() != 9) {
-            System.out.println("Error: Debe introducir un id valido");
-            dni = s.next();
-        }
 
-        boolean opereacion = controladora.consultarVendedor(dni);
-        if (opereacion == false) {
+
+        boolean operacion = controladora.consultarVendedor(dni);
+        if (operacion == false) {
             System.out.println("No existe dicho vendedor. ");
         }
     }
