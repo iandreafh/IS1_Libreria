@@ -1,4 +1,5 @@
 package ModeloDeNegocio;
+
 import java.util.*;
 
 public class Venta {
@@ -61,11 +62,13 @@ public class Venta {
         return id;
     }
 
-    /***
+    /**
+     * *
      * Metodo que anade una linea de venta a la venta actual
+     *
      * @param precioFinal precio final del libro a vender
      * @param libro instancia del libro
-     * @return 
+     * @return
      */
     public boolean anadirLinea(float precioFinal, Libro libro) {
         LineaVenta nueva = new LineaVenta(sigId(), precioFinal, libro);
@@ -73,17 +76,17 @@ public class Venta {
         return this.listaLdv.add(nueva);
     }
 
-    /***
-     * Metodo que genera los bonos una vez confirmada la venta y actualiza el estado de los libros a vendido
+    /**
+     * *
+     * Metodo que genera los bonos una vez confirmada la venta y actualiza el
+     * estado de los libros a vendido
      */
     public void confirmarVenta() {
         crearBonos();
-        for(int i=0; i<listaLdv.size(); i++){
-            listaLdv.get(i).getLibro().setEstado(1);
-        }
     }
 
-    /***
+    /**
+     * *
      * Genera los bonos asociados a cada linea de venta
      */
     public void crearBonos() {
@@ -92,18 +95,24 @@ public class Venta {
         //Por cada linea de venta, creo un bono e informo al vendedor
         for (int i = 0; i < this.listaLdv.size(); i++) {
             v = this.listaLdv.get(i).getLibro().getVendedor();
+            // Actualizo el estado a vendido (1)
+            this.listaLdv.get(i).getLibro().setEstado(1);
+
             cantidad = (float) (this.listaLdv.get(i).getPrecioFinal() * 0.15);
 
-            //Hay que ver que hacemos con el id del bono, por defecto 1
-            Bono nuevo = new Bono(1, cantidad, v);
+            int sigId = v.getListaBonos().size() + 1;
+            Bono nuevo = new Bono(sigId, cantidad, v);
             this.listaLdv.get(i).setBono(nuevo);
             v.anadirBono(nuevo);
             informarVendedor(this.listaLdv.get(i).getLibro(), nuevo);
         }
     }
 
-    /***
-     * Metodo que informa al vendedor de la venta y generacion del bono a su favor
+    /**
+     * *
+     * Metodo que informa al vendedor de la venta y generacion del bono a su
+     * favor
+     *
      * @param libro libro vendido
      * @param bono bono generado a favor del vendedor
      */
@@ -115,6 +124,7 @@ public class Venta {
         mensaje += "\n\n Gracias por utilizar nuestros servicios, La Libreria";
 
         //Se enviaria el mensaje a ese email
+        System.out.println(mensaje);
     }
 
 }

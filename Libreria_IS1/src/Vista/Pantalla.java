@@ -55,8 +55,8 @@ public class Pantalla {
                 + "\n\t 2. Baja de Libro "
                 + "\n\t 3. Listado de Libros alfabéticamente "
                 + "\n\t 4. Listado de Libros por antigüedad "
-                + "\n\t 5. Listado de Libros vendidos (proximamente)"
-                + "\n\t 6. Listado de Libros retirados (proximamente)"
+                + "\n\t 5. Listado de Libros vendidos"
+                + "\n\t 6. Listado de Libros retirados"
                 + "\n\t 0. Salir\n");
         System.out.println("Selección: ");
         Scanner s = new Scanner(System.in);
@@ -157,6 +157,10 @@ public class Pantalla {
     public void altaLibros() {
         Scanner s = new Scanner(System.in);
 
+        System.out.println("Introduzca el dni del vendedor: ");
+        String dni = s.nextLine();
+        controladora.asociarVendedor(dni);
+
         System.out.println("Introduzca el título del libro: ");
         String titulo = s.nextLine();
         while (titulo == "") {
@@ -242,7 +246,7 @@ public class Pantalla {
 
         while (itVendidos.hasNext()) {
             System.out.println(itVendidos.next().toString());
-        }   
+        }
     }
 
     public void listadoDeLibrosRetirados() {
@@ -293,7 +297,6 @@ public class Pantalla {
 
         System.out.println("Introduzca el dni del vendedor: ");
         String dni = s.next();
-
 
         boolean operacion = controladora.consultarVendedor(dni);
         if (operacion == false) {

@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class ControladoraTest {
 
-    private Libreria lib;
+    private Libreria lib = new Libreria(100); //Habria que acceder a la libreria
     private Venta ventaActual;
     private int capacidadLibros;
     private List<Libro> listaLibros = new ArrayList<Libro>();
