@@ -8,8 +8,8 @@ public class Controladora {
     private Venta ventaActual;
     private Vendedor vendedorActual;
 
-    public Controladora() {
-        this.lib = new Libreria(100); //Capacidad para 100 libros, por ejemplo
+    public Controladora(Libreria lib) {
+        this.lib = lib; //Capacidad para 100 libros, por ejemplo
         cargaDatos();
     }
 
@@ -33,7 +33,7 @@ public class Controladora {
         //Cuidado con si la lista esta vacia y es el primer libro
 //        int sigId = this.lib.getListaLibros().get(this.lib.getListaLibros().size()).getId() + 1;
         int sigId = this.lib.getListaLibros().size() + 1;
-        Date fechaAlta=new Date();
+        Date fechaAlta = new Date();
         Libro libro = new Libro(sigId, titulo, ISBN, precioInicial, precioMinimo, fechaAlta, estado, this.vendedorActual);
         return this.lib.libroNuevo(libro);
     }
@@ -43,7 +43,7 @@ public class Controladora {
 //        int sigId = this.lib.getListaVentas().get(this.lib.getListaVentas().size()-1).getId() + 1;
         int sigId = this.lib.getListaVentas().size() + 1;
         ventaActual = new Venta(sigId, new Date());
-        System.out.println("Se ha iniciado una nueva Venta con ID "+this.ventaActual.getId()+" y con fecha "+this.ventaActual.getFecha());
+        System.out.println("Se ha iniciado una nueva Venta con ID " + this.ventaActual.getId() + " y con fecha " + this.ventaActual.getFecha());
     }
 
     public boolean addLibroVenta(int id, float precioFinal) {
@@ -61,7 +61,7 @@ public class Controladora {
 
     public void confirmarVenta() {
         this.ventaActual.confirmarVenta();
-        List<String> emails = new ArrayList<String>(); 
+        List<String> emails = new ArrayList<String>();
     }
 
     //Este metodo no haria falta, hay que borrarlo, ya que se hace automatico al crear el bono
@@ -99,9 +99,9 @@ public class Controladora {
         //Dos ventas, una con un libro y otra con dos.
         // Dos retiradas de libros, una por cada vendedor, una de solo un libro y otra de dos.
     }
-    
+
     //Necesitamos para poder comprobar el resultado con los test
-    public Venta getVenta(){
+    public Venta getVenta() {
         return this.ventaActual;
     }
 

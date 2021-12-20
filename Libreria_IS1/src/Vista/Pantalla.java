@@ -15,8 +15,8 @@ public class Pantalla {
 
     private Controladora controladora;
 
-    public Pantalla() {
-        this.controladora = new Controladora();
+    public Pantalla(Controladora c) {
+        this.controladora = c;
     }
     
     public void mostrarOpciones() {
