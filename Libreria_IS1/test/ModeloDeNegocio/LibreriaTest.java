@@ -197,7 +197,7 @@ public class LibreriaTest {
         Vendedor v = vendedor1;
         Libreria instance = libreria;      
         boolean expResult = true;
-        boolean result = instance.VendedorNuevo(v);
+        boolean result = instance.vendedorNuevo(v);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -227,9 +227,9 @@ public class LibreriaTest {
         System.out.println("LibroNuevo");
         Libro libro = libro1;
         Libreria instance = libreria;
-        instance.LibroNuevo(libro1);
+        instance.libroNuevo(libro1);
         boolean expResult = true;
-        boolean result = instance.LibroNuevo(libro);
+        boolean result = instance.libroNuevo(libro);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

@@ -16,7 +16,7 @@ public class Controladora {
     public boolean anadirVendedor(String dni, String nombre, String apellidos, long telefono, String email) {
         Vendedor v = new Vendedor(dni, nombre, apellidos, telefono, email);
         //this.vendedorActual=v;
-        return this.lib.VendedorNuevo(v);
+        return this.lib.vendedorNuevo(v);
     }
 
     public boolean asociarVendedor(String dni) {
@@ -35,7 +35,7 @@ public class Controladora {
         int sigId = this.lib.getListaLibros().size() + 1;
         Date fechaAlta=new Date();
         Libro libro = new Libro(sigId, titulo, ISBN, precioInicial, precioMinimo, fechaAlta, estado, this.vendedorActual);
-        return this.lib.LibroNuevo(libro);
+        return this.lib.libroNuevo(libro);
     }
 
     public void crearVenta() {
@@ -46,7 +46,7 @@ public class Controladora {
         System.out.println("Se ha iniciado una nueva Venta con ID "+this.ventaActual.getId()+" y con fecha "+this.ventaActual.getFecha());
     }
 
-    public boolean addLibro(int id, float precioFinal) {
+    public boolean addLibroVenta(int id, float precioFinal) {
         Libro libro = this.lib.buscarLibro(id);
         boolean ok = true;
         if (libro == null) //Si no encuentro el libro, no ok

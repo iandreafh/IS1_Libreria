@@ -165,7 +165,7 @@ public class ControladoraTest {
 
         //Tenemos que crear una venta actual para poder ejecutar el incluirLibro
         instance.crearVenta();
-        boolean result = instance.addLibro(id, precioFinal);
+        boolean result = instance.addLibroVenta(id, precioFinal);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

@@ -61,16 +61,31 @@ public class Venta {
         return id;
     }
 
+    /***
+     * Metodo que anade una linea de venta a la venta actual
+     * @param precioFinal precio final del libro a vender
+     * @param libro instancia del libro
+     * @return 
+     */
     public boolean anadirLinea(float precioFinal, Libro libro) {
         LineaVenta nueva = new LineaVenta(sigId(), precioFinal, libro);
         this.precioTotal += precioFinal;
         return this.listaLdv.add(nueva);
     }
 
+    /***
+     * Metodo que genera los bonos una vez confirmada la venta y actualiza el estado de los libros a vendido
+     */
     public void confirmarVenta() {
         crearBonos();
+        for(int i=0; i<listaLdv.size(); i++){
+            listaLdv.get(i).getLibro().setEstado(1);
+        }
     }
 
+    /***
+     * Gengera los bonos asociados a cada linea de venta
+     */
     public void crearBonos() {
         Vendedor v;
         float cantidad;
@@ -87,9 +102,14 @@ public class Venta {
         }
     }
 
+    /***
+     * Metodo que informa al vendedor de la venta y generacion del bono a su favor
+     * @param libro libro vendido
+     * @param bono bono generado a favor del vendedor
+     */
     public void informarVendedor(Libro libro, Bono bono) {
         String email = bono.getVendedor().getEmail();
-        String mensaje = "Buenas " + bono.getVendedor().getNombre();
+        String mensaje = "Buenas, " + bono.getVendedor().getNombre();
         mensaje += "\nLe informamos que su libro " + libro.getTitulo() + " se ha vendido.";
         mensaje += "\nTiene un nuevo bono de " + bono.getCantidad() + " E a su disposicion.";
         mensaje += "\n\n Gracias por utilizar nuestros servicios, La Libreria";

@@ -22,20 +22,22 @@ public class Pantalla {
     public void mostrarOpciones() {
         Scanner s = new Scanner(System.in);
         int opc = -1;
-
-        System.out.println("\nMENÚ PRINCIPAL:\n \t 1. Gestión de Libros \n\t 2. Gestión de Vendedores \n\t 3. Venta \n\n\t 0. Salir");
-
-        opc = s.nextInt();
-        if (opc < 0 || opc > 3) {
-            System.out.println("La intruccion no esta reconocida");
-        } else if (opc == 0) {
-            finProceso();
-        } else if (opc == 1) {
-            gestionLibros();
-        } else if (opc == 2) {
-            gestionVendedores();
-        } else if (opc == 3) {
-            venta();
+        
+        while(opc!=0){
+            System.out.println("\nMENÚ PRINCIPAL:\n \t 1. Gestión de Libros \n\t 2. Gestión de Vendedores \n\t 3. Venta \n\n\t 0. Salir");
+            System.out.println("Selección: ");
+            opc = s.nextInt();
+            if (opc < 0 || opc > 3) {
+                System.out.println("La intruccion no esta reconocida");
+            } else if (opc == 0) {
+                finProceso();
+            } else if (opc == 1) {
+                gestionLibros();
+            } else if (opc == 2) {
+                gestionVendedores();
+            } else if (opc == 3) {
+                venta();
+            }
         }
     }
 
@@ -44,8 +46,8 @@ public class Pantalla {
     }
 
     private void gestionLibros() {
-        System.out.println("\nMENÚ GESTION DE LIBROS: \t 1. Alta de Libro \n\t 2. Baja de Libro \n\t 3. Listado de Libros alfabéticamente \n\t 4. Listado de Libros por antigüedad \n\t 5. Listado de Libros vendidos \n\t 6. Listado de Libros retirados \n\t 0. Salir");
-
+        System.out.println("\nMENÚ GESTION DE LIBROS: \n\t 1. Alta de Libro \n\t 2. Baja de Libro \n\t 3. Listado de Libros alfabéticamente \n\t 4. Listado de Libros por antigüedad \n\t 5. Listado de Libros vendidos \n\t 6. Listado de Libros retirados \n\t 0. Salir\n");
+        System.out.println("Selección: ");
         Scanner s = new Scanner(System.in);
         int opc = s.nextInt();
 
@@ -79,8 +81,8 @@ public class Pantalla {
     }
 
     private void gestionVendedores() {
-        System.out.println("\nMENÚ GESTIÓN VENDEDORES: \n\t 1. Alta Vendedor \n\t 2. Modificación Vendedor \n\t 0. Salir");
-
+        System.out.println("\nMENÚ GESTIÓN VENDEDORES: \n\t 1. Alta Vendedor \n\t 2. Modificación Vendedor \n\t 0. Salir\n");
+        System.out.println("Selección: ");
         Scanner s = new Scanner(System.in);
         int opc = s.nextInt();
 
@@ -104,7 +106,7 @@ public class Pantalla {
     public void venta() {
         Scanner s = new Scanner(System.in);
 
-        System.out.println("\nIniacio de una nueva Venta");
+        System.out.println("\nInicio de una nueva Venta");
 
         controladora.crearVenta();
 
@@ -119,11 +121,11 @@ public class Pantalla {
             
             System.out.println("\tIntroducza el id del libro a vender: ");
             id=s.nextInt();
-            
+
             System.out.println("\tIntroducza el precio final del libro a vender: ");
             precioFinal=s.nextFloat();
             
-            operacion=controladora.addLibro(id, precioFinal);
+            operacion=controladora.addLibroVenta(id, precioFinal);
             if(operacion==true){
                 System.out.println("Se anadio el libro al carrito de compra.");
             }else{
