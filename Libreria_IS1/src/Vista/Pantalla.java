@@ -234,11 +234,27 @@ public class Pantalla {
     }
 
     public void listadoDeLibrosVendidos() {
-        System.out.println("YA MAÑANA SI ESO");
+        List listado = controladora.listadoLibrosVendidos();
+
+        Iterator itVendidos = listado.iterator();
+
+        System.out.println("Se imprimirá el listado de libros vendidos en la librería: ");
+
+        while (itVendidos.hasNext()) {
+            System.out.println(itVendidos.next().toString());
+        }   
     }
 
     public void listadoDeLibrosRetirados() {
-        System.out.println("YA MAÑANA SI ESO");
+        List listado = controladora.listadoLibrosRetirados();
+
+        Iterator itRetirados = listado.iterator();
+
+        System.out.println("Se imprimirá el listado de libros retirados en la librería: ");
+
+        while (itRetirados.hasNext()) {
+            System.out.println(itRetirados.next().toString());
+        }
     }
 
     public void altaVendedor() {
@@ -277,11 +293,14 @@ public class Pantalla {
 
         System.out.println("Introduzca el dni del vendedor: ");
         String dni = s.next();
-        while (dni == "") {
+        while (dni.length() != 9) {
             System.out.println("Error: Debe introducir un id valido");
             dni = s.next();
         }
 
-        boolean operacion = controladora.consultarVendedor(dni);
+        boolean opereacion = controladora.consultarVendedor(dni);
+        if (opereacion == false) {
+            System.out.println("No existe dicho vendedor. ");
+        }
     }
 }

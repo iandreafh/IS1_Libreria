@@ -76,6 +76,14 @@ public class Controladora {
         return this.lib.listadoLibrosAntiguos();
     }
 
+    public List<Libro> listadoLibrosVendidos() {
+        return this.lib.listadoLibrosVendidos();
+    }
+
+    public List<Libro> listadoLibrosRetirados() {
+        return this.lib.listadoLibrosRetirados();
+    }
+
     void cargaDatos() {
         // Dos vendedores.
         anadirVendedor("111111", "Julia", "Rodriguez", 654789877, "jrodriguez@mail.com");
@@ -116,14 +124,22 @@ public class Controladora {
         return this.ventaActual;
     }
 
+//    public boolean consultarVendedor(String dni) {
+//        boolean encontrado = false;
+//        Vendedor v = this.lib.asociarVendedor(dni);
+//        if (v != null) {
+//            v.toString();
+//            encontrado = true;
+//        }
+//        return encontrado;
+//    }
     public boolean consultarVendedor(String dni) {
         boolean encontrado = false;
         Vendedor v = this.lib.asociarVendedor(dni);
         if (v != null) {
-            v.toString();
+            System.out.println(v.toString());
             encontrado = true;
         }
         return encontrado;
     }
-
 }

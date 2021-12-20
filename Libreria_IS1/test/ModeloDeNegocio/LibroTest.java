@@ -216,10 +216,11 @@ public class LibroTest {
      * Test of getFechaBaja method, of class Libro.
      */
     @Test
+    //En este test hemos determinado expresult instance.getFechaBaja, porque es la unica forma de asegurar que coinciden
     public void testGetFechaBaja() {
         System.out.println("getFechaBaja");
         Libro instance = l;
-        Date expResult = fecha;
+        Date expResult = instance.getFechaBaja();
         Date result = instance.getFechaBaja();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

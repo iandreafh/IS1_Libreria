@@ -89,11 +89,12 @@ public class BonoTest {
     @Test
     public void testSetCantidad() {
         System.out.println("setCantidad");
-        float cantidad = 0.0F;
-        Bono instance = null;
+        float cantidad = 10.68F;
+        Bono instance = bono;
         instance.setCantidad(cantidad);
+        assertEquals(cantidad, instance.getCantidad(), 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -102,12 +103,12 @@ public class BonoTest {
     @Test
     public void testGetVendedor() {
         System.out.println("getVendedor");
-        Bono instance = null;
-        Vendedor expResult = null;
+        Bono instance = bono;
+        Vendedor expResult = vendedor;
         Vendedor result = instance.getVendedor();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -116,11 +117,12 @@ public class BonoTest {
     @Test
     public void testSetVendedor() {
         System.out.println("setVendedor");
-        Vendedor vendedor = null;
-        Bono instance = null;
+        Vendedor vendedor = this.vendedor;
+        Bono instance = bono;
         instance.setVendedor(vendedor);
+        assertEquals(vendedor, instance.getVendedor());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
 }

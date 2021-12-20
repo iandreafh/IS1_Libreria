@@ -79,5 +79,24 @@ public class Vendedor {
     public boolean anadirBono(Bono bono) {
         return this.listaBonos.add(bono);
     }
+    
+    public String toString(){
+        String message="Características del Vendedor: "+
+                "\n Nombre: "+getNombre()+
+                "\n Apellido: "+getApellidos()+
+                "\n DNI: "+getDni()+
+                "\n Teléfono: "+getTelefono()+
+                "\n Email: "+getEmail()+
+                "\n Bonos: ";
+        
+        Iterator itBonos=listaBonos.iterator();
+        
+        int i=0;
+        while(itBonos.hasNext()){
+            message+="\n Bono Nº "+i+" "+itBonos.next().toString();
+            
+        }
+        return message;
+    }
 
 }

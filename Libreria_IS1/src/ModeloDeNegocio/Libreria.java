@@ -201,4 +201,31 @@ public class Libreria {
         return listado;
     }
 
+    public List<Libro> listadoLibrosVendidos() {
+        List<Libro> listado = new ArrayList<>();
+        for (int i = 0; i < this.listaLibros.size(); i++) {
+            //Si el libro esta vendido se incluye en la lista
+            if (this.listaLibros.get(i).getEstado() == 1) {
+                listado.add(listaLibros.get(i));
+            }
+        }
+
+        //Lo devolvemos sin ningun orden aparente, solo con la condicion de venta
+        return listado;
+    }
+
+    public List<Libro> listadoLibrosRetirados() {
+        List<Libro> listado = new ArrayList<>();
+        
+        for (int i = 0; i < this.listaLibros.size(); i++) {
+            //Si el libro esta vendido se incluye en la lista
+            if (this.listaLibros.get(i).getEstado() !=0 && this.listaLibros.get(i).getEstado() !=1) {
+                listado.add(listaLibros.get(i));
+            }
+        }
+
+        //Lo devolvemos sin ningun orden aparente, solo con la condicion de venta
+        return listado;
+    }
+
 }
