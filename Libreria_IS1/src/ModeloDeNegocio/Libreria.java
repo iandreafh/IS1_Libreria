@@ -101,8 +101,19 @@ public class Libreria {
      * @return true si el vendedor ha sido anadido a la lista de vendedores
      */
     public boolean vendedorNuevo(Vendedor v) {
-        System.out.println("Doy de alta a " + v.getNombre() + ' ' + v.getApellidos());
-        return this.listaVendedores.add(v);
+        boolean ok = true;
+        for (int i = 0; i < listaVendedores.size(); i++) {
+            if (listaVendedores.get(i).getDni().equals(v.getDni())) {
+                System.out.println("El vendedor ya existe");
+                ok = false;
+            }
+        }
+        if (ok) {
+            System.out.println("Doy de alta a " + v.getNombre() + ' ' + v.getApellidos());
+            this.listaVendedores.add(v);
+        }
+
+        return ok;
     }
 
     /**
@@ -116,7 +127,6 @@ public class Libreria {
         venta.confirmarVenta();
         return this.listaVentas.add(venta);
     }
-
 
     //TODO: Este asociar vendedor no se que hace
     /**
@@ -144,8 +154,14 @@ public class Libreria {
      * @return True si el libro ha sido anadido a la libreria
      */
     public boolean libroNuevo(Libro libro) {
-        System.out.println("Doy de alta " + libro.getTitulo());
-        return this.listaLibros.add(libro);
+        boolean ok = false;
+        if (this.listaLibros.size() < this.capacidadLibros) {
+            System.out.println("Doy de alta " + libro.getTitulo());
+            ok = this.listaLibros.add(libro);
+        } else {
+            System.out.println("La libreria ha alcanzado la capacidad maxima");
+        }
+        return ok;
     }
 
     /**
@@ -158,13 +174,15 @@ public class Libreria {
     public boolean bajaLibro(int id) {
         boolean encontrado = false;
         for (int i = 0; i < this.listaLibros.size(); i++) {
-            if (this.listaLibros.get(i).getId() == id) {
+            if (this.listaLibros.get(i).getId() == id && this.listaLibros.get(i).getEstado() == 0) {
                 this.listaLibros.get(i).setEstado(-1); // Estado -1 es no disponible, 0 en exposicion, 1 ya vendido
                 System.out.println("Doy de baja " + this.listaLibros.get(i).getTitulo());
                 encontrado = true;
             }
         }
-
+        if (!encontrado) {
+            System.out.println("El libro introducido no esta en exposicion.");
+        }
         return encontrado;
     }
 
@@ -231,10 +249,10 @@ public class Libreria {
 
     public List<Libro> listadoLibrosRetirados() {
         List<Libro> listado = new ArrayList<>();
-        
+
         for (int i = 0; i < this.listaLibros.size(); i++) {
             //Si el libro esta vendido se incluye en la lista
-            if (this.listaLibros.get(i).getEstado() !=0 && this.listaLibros.get(i).getEstado() !=1) {
+            if (this.listaLibros.get(i).getEstado() != 0 && this.listaLibros.get(i).getEstado() != 1) {
                 listado.add(listaLibros.get(i));
             }
         }

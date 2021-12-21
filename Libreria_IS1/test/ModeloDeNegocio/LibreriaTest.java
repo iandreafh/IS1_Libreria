@@ -239,12 +239,11 @@ public class LibreriaTest {
      * Test of bajaLibro method, of class Libreria.
      */
     @Test
-    public void testDeleteLibro() {
-        System.out.println("deleteLibro");
+    public void testBajaLibro() {
+        System.out.println("bajaLibro");
         int id = 85;
         Libreria instance = libreria;
         instance.setListaLibros(listaLibros);
-        instance.bajaLibro(id);
         boolean expResult = true;
         boolean result = instance.bajaLibro(id);
         assertEquals(expResult, result);

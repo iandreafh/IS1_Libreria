@@ -94,7 +94,7 @@ public class Pantalla {
     private void gestionVendedores() {
         System.out.println("\nMENÚ GESTIÓN VENDEDORES: "
                 + "\n\t 1. Alta Vendedor "
-                + "\n\t 2. Modificación Vendedor (proximamente)"
+                + "\n\t 2. Modificación Vendedor"
                 + "\n\t 3. Consulta Vendedor"
                 + "\n\t 0. Salir\n");
         System.out.println("Selección: ");
@@ -134,13 +134,12 @@ public class Pantalla {
         boolean operacion;
 
         while (decision != 2) {
-            System.out.println("\n ¿Quiere introducir un nuevo libro?: \n\t 1. Si\n\t 2. No");
-            decision = s.nextInt();
 
             System.out.println("\tIntroduzca el id del libro a vender: ");
             id = s.nextInt();
 
-            System.out.println("\tIntroducza el precio final del libro a vender: ");
+            //Asumimos que la negociacion de precio se hara previamente mediante consulta del libro
+            System.out.println("\tIntroduzca el precio final del libro a vender: ");
             precioFinal = s.nextFloat();
 
             operacion = controladora.addLibroVenta(id, precioFinal);
@@ -149,9 +148,20 @@ public class Pantalla {
             } else {
                 System.out.println("No pudo completarse la operación.");
             }
-        }
 
-        controladora.confirmarVenta();
+            System.out.println("¿Quiere introducir un nuevo libro?: \n\t 1. Si\n\t 2. No");
+            decision = s.nextInt();
+        }
+        //Imprimo un resumen de la venta, para que la confirme
+        this.controladora.imprimirTicket();
+        System.out.println("\t¿Quiere confirmar la venta?:"
+                + "\n\t 1. Si \n\t 2. No");
+        int confirmacion = s.nextInt();
+        if (confirmacion == 1) {
+            controladora.confirmarVenta();
+        } else {
+            System.out.println("Venta cancelada.");
+        }
     }
 
     public void altaLibros() {
@@ -160,41 +170,53 @@ public class Pantalla {
         System.out.println("Introduzca el dni del vendedor: ");
         String dni = s.nextLine();
         controladora.asociarVendedor(dni);
+        boolean exit = false;
 
-        System.out.println("Introduzca el título del libro: ");
-        String titulo = s.nextLine();
-        while (titulo == "") {
-            System.out.println("Error: Debe introducir un titulo");
-            titulo = s.nextLine();
-        }
+        while (!exit) {
 
-        System.out.println("Introduzca el ISBN del libro: ");
-        String ISBN = s.nextLine();
-        while (ISBN == "") {
-            System.out.println("Error: Debe introducir un ISBN");
-            ISBN = s.nextLine();
-        }
+            System.out.println("Introduzca el título del libro: ");
+            String titulo = s.nextLine();
+            while (titulo == "") {
+                System.out.println("Error: Debe introducir un titulo");
+                titulo = s.nextLine();
+            }
 
-        System.out.println("Introduzca el precio inicial del libro (formato 0,00): ");
-        float precioInicial = s.nextFloat();
-        while (precioInicial < 0) {
-            System.out.println("Error: Debe introducir un numero positivo");
-            precioInicial = s.nextFloat();
-        }
+            System.out.println("Introduzca el ISBN del libro: ");
+            String ISBN = s.nextLine();
+            while (ISBN == "") {
+                System.out.println("Error: Debe introducir un ISBN");
+                ISBN = s.nextLine();
+            }
 
-        System.out.println("Introduzca el precio mínimo del libro (formato 0,00): ");
-        float precioMinimo = s.nextFloat();
-        while (precioMinimo < 0) {
-            System.out.println("Error: Debe introducir un numero positivo");
-            precioMinimo = s.nextFloat();
-        }
+            System.out.println("Introduzca el precio inicial del libro (formato 0,00): ");
+            float precioInicial = s.nextFloat();
+            while (precioInicial < 0) {
+                System.out.println("Error: Debe introducir un numero positivo");
+                precioInicial = s.nextFloat();
+            }
 
-        boolean operacion = controladora.anadirLibro(titulo, ISBN, precioInicial, precioMinimo);
+            System.out.println("Introduzca el precio mínimo del libro (formato 0,00): ");
+            float precioMinimo = s.nextFloat();
+            while (precioMinimo < 0) {
+                System.out.println("Error: Debe introducir un numero positivo");
+                precioMinimo = Float.parseFloat(s.nextLine());
+            }
 
-        if (operacion == true) {
-            System.out.println("Se completo la acción correctamente.");
-        } else {
-            System.out.println("No pudo completarse la acción.");
+            boolean operacion = controladora.anadirLibro(titulo, ISBN, precioInicial, precioMinimo);
+
+            if (operacion == true) {
+                System.out.println("Se completo la acción correctamente.");
+            } else {
+                System.out.println("No pudo completarse la acción.");
+            }
+
+            s = new Scanner(System.in);
+            System.out.println("\n\t¿Quiere dar de alta otro libro?:"
+                    + "\n\t 1. Si \n\t 2. No");
+            int confirmacion = Integer.parseInt(s.nextLine());
+            if (confirmacion == 2) {
+                exit = true;
+            }
         }
     }
 
@@ -265,21 +287,21 @@ public class Pantalla {
         Scanner s = new Scanner(System.in);
 
         System.out.println("Introduzca el dni del nuevo vendedor: ");
-        String dni = s.next();
+        String dni = s.nextLine();
 
         System.out.println("Introduzca el nombre: ");
-        String nombre = s.next();
+        String nombre = s.nextLine();
 
         System.out.println("Introduzca el apellido: ");
         String apellidos = s.nextLine();
 
         System.out.println("Introduzca el telefono: ");
-        long telefono = s.nextLong();
+        long telefono = Long.parseLong(s.nextLine());
 
         System.out.println("Introduzca el email: ");
-        String email = s.next();
+        String email = s.nextLine();
 
-        boolean operacion = controladora.anadirVendedor(dni, nombre, apellidos, 0, email);
+        boolean operacion = controladora.anadirVendedor(dni, nombre, apellidos, telefono, email);
 
         if (operacion == true) {
             System.out.println("Se completo la acción correctamente.");
@@ -289,7 +311,17 @@ public class Pantalla {
     }
 
     public void modificarVendedor() {
-        System.out.println("YA PARA MAÑANA");
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Introduzca el dni del vendedor: ");
+        String dni = s.nextLine();
+        System.out.println("Introduzca el nuevo email del vendedor: ");
+        String email = s.nextLine();
+
+        boolean operacion = controladora.modificarVendedor(dni, email);
+        if (operacion == false) {
+            System.out.println("No existe dicho vendedor. ");
+        }
     }
 
     public void consultarVendedor() {

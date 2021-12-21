@@ -89,7 +89,7 @@ public class Venta {
      * *
      * Genera los bonos asociados a cada linea de venta
      */
-    public void crearBonos() {
+    private void crearBonos() {
         Vendedor v;
         float cantidad;
         //Por cada linea de venta, creo un bono e informo al vendedor
@@ -98,13 +98,13 @@ public class Venta {
             // Actualizo el estado a vendido (1)
             this.listaLdv.get(i).getLibro().setEstado(1);
 
-            cantidad = (float) (this.listaLdv.get(i).getPrecioFinal() * 0.15);
+            cantidad = (float) (this.listaLdv.get(i).getPrecioFinal() * 0.85);
 
             int sigId = v.getListaBonos().size() + 1;
             Bono nuevo = new Bono(sigId, cantidad, v);
             this.listaLdv.get(i).setBono(nuevo);
             v.anadirBono(nuevo);
-            informarVendedor(this.listaLdv.get(i).getLibro(), nuevo);
+            informarVendedor(this.listaLdv.get(i).getLibro(), nuevo, this.listaLdv.get(i).getPrecioFinal());
         }
     }
 
@@ -116,15 +116,23 @@ public class Venta {
      * @param libro libro vendido
      * @param bono bono generado a favor del vendedor
      */
-    public void informarVendedor(Libro libro, Bono bono) {
+    private void informarVendedor(Libro libro, Bono bono, float precioFinal) {
         String email = bono.getVendedor().getEmail();
-        String mensaje = "Buenas, " + bono.getVendedor().getNombre();
-        mensaje += "\nLe informamos que su libro " + libro.getTitulo() + " se ha vendido.";
-        mensaje += "\nTiene un nuevo bono de " + bono.getCantidad() + " E a su disposicion.";
-        mensaje += "\n\n Gracias por utilizar nuestros servicios, La Libreria";
+        String mensaje = "\n Buenas, " + bono.getVendedor().getNombre();
+        mensaje += "\nLe informamos que su libro " + libro.getTitulo() + " registrado el dia " + libro.getFechaAlta() + " se ha vendido por " + precioFinal + " euros."
+                + "\nTiene un nuevo bono de " + bono.getCantidad() + " euros a su disposicion. En total ya lleva " + bono.getVendedor().getListaBonos().size() + " bonos."
+                + "\n Gracias por utilizar nuestros servicios, La Libreria.";
 
         //Se enviaria el mensaje a ese email
         System.out.println(mensaje);
+    }
+
+    public String toString() {
+        String message = "\nResumen de la venta: "
+                + "\n Cantidad de libros: " + this.listaLdv.size()
+                + "\n Precio total: " + this.precioTotal +'\n';
+
+        return message;
     }
 
 }

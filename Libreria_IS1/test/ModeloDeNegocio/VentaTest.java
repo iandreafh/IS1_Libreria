@@ -198,34 +198,5 @@ public class VentaTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of crearBonos method, of class Venta.
-     */
-    //No tengo ni idea de como enfocar este confirmarVenta deberían de ser private??
-    @Test
-    public void testCrearBonos() {
-        System.out.println("crearBonos");
-        Venta instance = null;
-        instance.crearBonos();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of informarVendedor method, of class Venta.
-     */
-    //No tengo ni idea de como enfocar este testInformarVendedor quizas deberían de ser privates??
-    @Test
-    public void testInformarVendedor() {
-        System.out.println("informarVendedor");
-        Libro libro = l;
-        Bono bono = null;
-        Venta instance = null;
-        instance.informarVendedor(libro, bono);
-        
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
     
 }

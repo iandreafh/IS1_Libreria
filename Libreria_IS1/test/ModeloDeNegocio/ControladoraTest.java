@@ -20,7 +20,6 @@ import static org.junit.Assert.*;
  */
 public class ControladoraTest {
 
-    private Libreria lib = new Libreria(100); //Habria que acceder a la libreria
     private Venta ventaActual;
     private int capacidadLibros;
     private List<Libro> listaLibros = new ArrayList<Libro>();
@@ -82,12 +81,12 @@ public class ControladoraTest {
     @Test
     public void testAnadirVendedor() {
         System.out.println("anadirVendedor");
-        String dni = "11111111-A";
+        String dni = "11111111-X";
         String nombre = "nombre";
         String apellidos = "apellido1";
         long telefono = 111111111L;
         String email = "prueba@gmail.com";
-        Controladora instance = new Controladora(lib);
+        Controladora instance = new Controladora(libreria);
         boolean expResult = true;
         boolean result = instance.anadirVendedor(dni, nombre, apellidos, telefono, email);
         assertEquals(expResult, result);
@@ -102,7 +101,7 @@ public class ControladoraTest {
     public void testAsociarVendedor() {
         System.out.println("asociarVendedor");
         String dni = "11111111-A";
-        Controladora instance = new Controladora(lib);
+        Controladora instance = new Controladora(libreria);
         instance.anadirVendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
         boolean expResult = true;
         boolean result = instance.asociarVendedor(dni);
@@ -121,7 +120,7 @@ public class ControladoraTest {
         String ISBN = "1111-A";
         float precioInicial = 15.1F;
         float precioMinimo = 3.5F;
-        Controladora instance = new Controladora(lib);
+        Controladora instance = new Controladora(libreria);
 
         //Usamos el metodo anadirVendedor para modificar el atributo vendedor de controladora y de esa forma se pasa como parametro de anadirLibro
         instance.anadirVendedor("11111111-A", "nombre", "apellido1", 111111111, "prueba@gmail.com");
@@ -139,7 +138,7 @@ public class ControladoraTest {
     @Test
     public void testCrearVenta() {
         System.out.println("crearVenta");
-        Controladora instance = new Controladora(lib);
+        Controladora instance = new Controladora(libreria);
         instance.crearVenta();
 
         Venta expresult = new Venta(3, new Date());
@@ -152,15 +151,12 @@ public class ControladoraTest {
      * Test of addLibro method, of class Controladora.
      */
     @Test
-    public void testAddLibro() {
-        System.out.println("addLibro");
-        int id = 1;
+    public void testAddLibroVenta() {
+        System.out.println("addLibro");     
         float precioFinal = 150.1F;
-        Controladora instance = new Controladora(lib);
+        Controladora instance = new Controladora(libreria);
         boolean expResult = true;
-
-        //Tenemos que anadir libro en libreria desde controladora para poder realizar este metodo
-        instance.anadirLibro("libro1", "1111-A", 15.1F, 3.5F);
+        int id = this.libro1.getId();
 
         //Tenemos que crear una venta actual para poder ejecutar el incluirLibro
         instance.crearVenta();
@@ -176,7 +172,7 @@ public class ControladoraTest {
     @Test
     public void testConfirmarVenta() {
         System.out.println("confirmarVenta");
-        Controladora instance = new Controladora(lib);
+        Controladora instance = new Controladora(libreria);
         instance.confirmarVenta();
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -188,12 +184,9 @@ public class ControladoraTest {
     @Test
     public void testBajaLibro() {
         System.out.println("deleteLibro");
-        int id = 1;
-        Controladora instance = new Controladora(lib);
+        int id = this.libro1.getId();
+        Controladora instance = new Controladora(libreria);
 
-        //Tenemos que anadir libro en libreria desde controladora para poder realizar este metodo
-        instance.anadirLibro("libro1", "1111-A", 15.1F, 3.5F);
-        
         boolean expResult = true;
         boolean result = instance.bajaLibro(id);
         assertEquals(expResult, result);
@@ -207,14 +200,10 @@ public class ControladoraTest {
     @Test
     public void testListadoLibrosAlfabeticamente() {
         System.out.println("listadoLibrosAlfabeticamente");
-        Controladora instance = new Controladora(lib);
+        Controladora instance = new Controladora(libreria);
         
-        //Tenemos que anadir libro en libreria desde controladora para poder realizar este metodo
-        instance.anadirLibro("libro1", "1111-A", 15.1F, 3.5F);
-        instance.anadirLibro("libro2", "2222-A", 1.1F, 0.5F);
-        
-        List<Libro> expResult = null;
-        List<Libro> result = instance.listadoLibrosAlfabeticamente();
+        int expResult = 10; //Los 8 libros creados en cargaDatos mas 2 de test
+        int result = instance.listadoLibrosAlfabeticamente().size();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -226,24 +215,11 @@ public class ControladoraTest {
     @Test
     public void testListadoLibrosAntiguos() {
         System.out.println("listadoLibrosAntiguos");
-        Controladora instance = new Controladora(lib);
-        List<Libro> expResult = null;
-        List<Libro> result = instance.listadoLibrosAntiguos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        Controladora instance = new Controladora(libreria);
 
-    /**
-     * Test of cargaDatos method, of class Controladora.
-     */
-    @Test
-    public void testCargaDatos() {
-        System.out.println("cargaDatos");
-        Controladora instance = new Controladora(lib);
-        instance.cargaDatos();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int expResult = 6;
+        int result = instance.listadoLibrosAntiguos().size();
+        assertEquals(expResult, result);
     }
 
 }

@@ -53,7 +53,17 @@ public class Controladora {
         {
             ok = false;
         } else {
-            ok = this.ventaActual.anadirLinea(precioFinal, libro);
+            if (libro.getEstado() == 0) {
+                if (precioFinal < libro.getPrecioMinimo()) {
+                    System.out.println("El precio minimo disponible del libro es " + libro.getPrecioMinimo() + ". Asumimos dicho precio.");
+                    precioFinal = libro.getPrecioMinimo();
+                }
+                ok = this.ventaActual.anadirLinea(precioFinal, libro);
+                System.out.println("El libro seleccionado es " + libro.getTitulo());
+            } else {
+                System.out.println("El libro seleccionado no esta en exposición o el precio no es valido");
+                ok = false;
+            }
         }
 
         return ok;
@@ -83,31 +93,31 @@ public class Controladora {
         return this.lib.listadoLibrosRetirados();
     }
 
-    void cargaDatos() {
+    private void cargaDatos() {
         // Dos vendedores.
         anadirVendedor("111111", "Julia", "Rodriguez", 654789877, "jrodriguez@mail.com");
         anadirVendedor("222222", "Lara", "Jimenez", 764547748, "larita@mail.com");
 
         // Tres depósitos de libros, con uno, dos y tres libros, respectivamente. Los dos primeros 
         // correspondientes a un vendedor, y el depósito de tres libros asignado al otro vendedor.
-        // Alta de 1 y 2 libros asociados al primer vendedor
+        // Alta de 1 y 2 libros asociados al primer vendedor manualmente
         this.asociarVendedor("111111");
         this.anadirLibro("Harry Potter y la piedra filosofal", "1234-123-123", 12, 10); // id 1
         this.anadirLibro("Fairy Oak", "1234-123-124", 10, 10); // id 2
         this.anadirLibro("Orgullo y prejuicio", "1234-123-125", 18, 15); // id 3
 
-        // Alta de 3 libros asociados al segundo vendedor
+        // Alta de 3 libros asociados al segundo vendedor manualmente
         this.asociarVendedor("222222");
         this.anadirLibro("Peppa pig", "1234-123-133", 12, 10); // id 4
         this.anadirLibro("Star Wars", "1234-123-134", 15, 10); // id 5
         this.anadirLibro("Los pilares de la Tierra", "1234-123-135", 20, 18); // id 6
 
         // Dos ventas, una con un libro y otra con dos.
-        this.crearVenta(); //Venta con 1 libro
+        this.crearVenta(); //Venta con 1 libro manualmente
         this.addLibroVenta(3, 16);
         this.confirmarVenta();
 
-        this.crearVenta(); //Venta con 2 libros
+        this.crearVenta(); //Venta con 2 libros manualmente
         this.addLibroVenta(2, 12);
         this.addLibroVenta(4, 10);
         this.confirmarVenta();
@@ -116,6 +126,12 @@ public class Controladora {
         this.bajaLibro(1); //Baja libro 1 del primero vendedor
         this.bajaLibro(5); //Baja libro 5 del segundo vendedor
         this.bajaLibro(6); //Baja libro 6 del segundo vendedor
+
+        // Metemos 2 libros mas para hacer pruebas de datos, ya que quedan todos vendidos o de baja
+        this.asociarVendedor("111111");
+        this.anadirLibro("Spiderman", "1234-123-153", 12, 10); // id 7
+        this.anadirLibro("Spiderman 2", "1234-123-154", 15, 10); // id 8
+
     }
 
     //Necesitamos para poder comprobar el resultado con los test
@@ -123,15 +139,18 @@ public class Controladora {
         return this.ventaActual;
     }
 
-//    public boolean consultarVendedor(String dni) {
-//        boolean encontrado = false;
-//        Vendedor v = this.lib.asociarVendedor(dni);
-//        if (v != null) {
-//            v.toString();
-//            encontrado = true;
-//        }
-//        return encontrado;
-//    }
+
+    public boolean modificarVendedor(String dni, String email) {
+        boolean encontrado = false;
+        Vendedor v = this.lib.asociarVendedor(dni);
+        if (v != null) {
+            v.setEmail(email);
+            System.out.println(v.toString());
+            encontrado = true;
+        }
+        return encontrado;
+    }
+
     public boolean consultarVendedor(String dni) {
         boolean encontrado = false;
         Vendedor v = this.lib.asociarVendedor(dni);
@@ -140,5 +159,9 @@ public class Controladora {
             encontrado = true;
         }
         return encontrado;
+    }
+
+    public void imprimirTicket() {
+        System.out.println(ventaActual);
     }
 }

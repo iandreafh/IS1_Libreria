@@ -4,10 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/iandr/IS1/Libreria_IS1/src/Vista/Pantalla.java</file>
-            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/src/ModeloDeNegocio/Libro.java</file>
             <file>file:/C:/Users/iandr/IS1/Libreria_IS1/src/ModeloDeNegocio/Libreria.java</file>
             <file>file:/C:/Users/iandr/IS1/Libreria_IS1/src/ModeloDeNegocio/Vendedor.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/test/ModeloDeNegocio/BonoTest.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/test/ModeloDeNegocio/VentaTest.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/test/ModeloDeNegocio/LibreriaTest.java</file>
             <file>file:/C:/Users/iandr/IS1/Libreria_IS1/src/ModeloDeNegocio/Controladora.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/test/ModeloDeNegocio/VendedorTest.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/test/ModeloDeNegocio/LineaVentaTest.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/src/ModeloDeNegocio/Libro.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/test/ModeloDeNegocio/ControladoraTest.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/test/ModeloDeNegocio/LibroTest.java</file>
+            <file>file:/C:/Users/iandr/IS1/Libreria_IS1/src/ModeloDeNegocio/Venta.java</file>
         </group>
     </open-files>
 </project-private>
